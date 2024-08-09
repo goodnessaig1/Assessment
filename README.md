@@ -57,7 +57,9 @@ yarn dev
 #### Submission Guidelines
 - Commit your changes to Git.
 - Push your repository to GitHub.
-- Share the link to your GitHub repository via email or the submission form provided.
+- Share the link to your GitHub repository via email or WhatsApp 
+
+#### Deadline 1week
 
 #### Evaluation Criteria
 - Code quality and organization.
