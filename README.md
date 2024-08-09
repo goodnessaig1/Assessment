@@ -13,8 +13,8 @@ Welcome to our Next.js project assignment! This task will guide you through crea
 
 ##### Step 1: Clone the Repository
 ```bash
-git clone https://github.com/your-repo-url.git
-cd your-project-name
+git clone https://github.com/GruveWeb3/Assessment
+cd Assessment
 ```
 
 ##### Step 2: Install Dependencies
