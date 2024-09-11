@@ -2,6 +2,7 @@
 
 #### Introduction
 Welcome to our Next.js project assignment! This task will guide you through creating a web application using Next.js, styled with TailwindCSS, and integrated with ThirdWeb for authentication and Arweave for file storage. 
+The Goal of the assessment is to guage your frontend(FE) prowess and your understanding of web3 concept
 
 #### Prerequisites
 - Basic knowledge of JavaScript and React.
@@ -45,6 +46,7 @@ yarn dev
 ##### Create a Next.js Project Using TailwindCSS
 - Initialize a new Next.js project.
 - Install TailwindCSS and configure it according to the official documentation.
+  NB: Please demonstrate your FE prowess to the best of your ability
 
 ##### Implement a Simple Login Flow Using ThirdWeb
 - Integrate ThirdWeb SDK for user authentication.
@@ -52,7 +54,8 @@ yarn dev
 
 ##### Allow Users to Upload a File to Arweave After Logging In
 - Implement a file upload feature after successful login.
-- Use Arweave API to store the uploaded files securely on the blockchain.
+- Use Arweave to store the uploaded files securely on the blockchain.
+- Add a list view to show all the files uploaded so far
 
 #### Submission Guidelines
 - Commit your changes to Git.
@@ -65,6 +68,7 @@ yarn dev
 - Code quality and organization.
 - Correctness of the implemented features.
 - Adherence to best practices in Next.js and TailwindCSS usage.
+- Design and overall appearance of the Application
 - Security considerations, especially around authentication and file uploads.
 
 #### Additional Resources
