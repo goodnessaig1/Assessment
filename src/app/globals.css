@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap");
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,18 +18,17 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html {
+  background-color: #131418;
+  color: #9ca3af;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+html.light {
+  background-color: #f9fafb;
+  color: #64748b;
+}
+
+body {
+  background-color: inherit;
+  color: inherit;
 }
