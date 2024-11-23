@@ -1,7 +1,7 @@
 "use server";
 import { VerifyLoginPayloadParams, createAuth } from "thirdweb/auth";
 import { privateKeyToAccount } from "thirdweb/wallets";
-import { client } from "../../client";
+import { client } from "../utils/client";
 import { cookies } from "next/headers";
 
 const privateKey = process.env.THIRDWEB_ADMIN_PRIVATE_KEY || "";

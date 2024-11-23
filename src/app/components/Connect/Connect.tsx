@@ -1,12 +1,12 @@
 "use client";
-import { client } from "@/client";
 import React from "react";
 import { ConnectEmbed, darkTheme, lightTheme } from "thirdweb/react";
-import { AppTheme, useAppContext } from "../../context/AppContext";
+import { useAppContext } from "../../context/AppContext";
 import { generatePayload, isLoggedIn, login, logout } from "../../actions/auth";
+import { client } from "@/app/utils/client";
 
 const Connect = () => {
-  const { theme, setLoggedIn } = useAppContext();
+  const { isDarkTheme, setLoggedIn } = useAppContext();
 
   const customDarkTheme = darkTheme({
     colors: {
@@ -24,7 +24,7 @@ const Connect = () => {
     <div className="h-screen flex w-full items-center justify-center">
       <ConnectEmbed
         client={client}
-        theme={theme === AppTheme.Dark ? customDarkTheme : customLightTheme}
+        theme={isDarkTheme ? customDarkTheme : customLightTheme}
         auth={{
           isLoggedIn: async () => {
             console.log("checking if logged in!");

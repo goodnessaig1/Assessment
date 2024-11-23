@@ -5,9 +5,10 @@ import Uploaded from "./Uploaded";
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { FiUploadCloud } from "react-icons/fi";
+import classNames from "classnames";
 
 const FileUpload = () => {
-  const { theme } = useAppContext();
+  const { isDarkTheme } = useAppContext();
   const [uploading, setUploading] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -61,18 +62,30 @@ const FileUpload = () => {
     setFile(null);
   };
 
+  const cancelButtonClass = classNames(
+    "rounded-full w-8 h-8 flex items-center justify-center text-3xl",
+    {
+      "text-white": isDarkTheme,
+      "text-gray-900": !isDarkTheme,
+    },
+  );
+
+  const dropzoneClass = classNames(
+    "w-full max-w-md p-6 h-32 border-2 border-dashed rounded-lg text-center cursor-pointer",
+    {
+      "border-blue-500": dragging,
+      "border-gray-300": !dragging,
+      "bg-gray-800 text-white": isDarkTheme,
+      "bg-gray-100 text-gray-900": !isDarkTheme,
+    },
+  );
+
   return (
     <div className="w-full min-h-screen flex items-center flex-col">
       <div className="flex flex-col mt-8 items-center justify-center w-full gap-4">
         <h3 className="font-dancing text-2xl">Upload Files to Arweave</h3>
         <div
-          className={`w-full max-w-md p-6 h-32 border-2 ${
-            dragging ? "border-blue-500" : "border-gray-300"
-          } border-dashed rounded-lg ${
-            theme === AppTheme.Dark
-              ? "bg-gray-800 text-white"
-              : "text-gray-900 bg-gray-200"
-          } text-white text-center cursor-pointer`}
+          className={dropzoneClass}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
@@ -81,9 +94,7 @@ const FileUpload = () => {
           {file && (
             <div className="absolute max-w-md w-full flex items-en ml-[-36px] mt-[-24px]  justify-end">
               <button
-                className={`${
-                  theme === AppTheme.Dark ? "text-white" : "text-gray-900"
-                } rounded-full w-8 h-8 flex items-center justify-center text-3xl`}
+                className={cancelButtonClass}
                 onClick={e => {
                   e.stopPropagation();
                   clearFile();
@@ -99,7 +110,7 @@ const FileUpload = () => {
             </p>
           ) : (
             <div className="flex flex-col gap-4 items-center justify-center">
-              <FiUploadCloud />
+              <FiUploadCloud size={24} />
               <p className="text-sm">
                 Drag and drop a file here, or click to select one.
               </p>

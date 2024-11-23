@@ -20,6 +20,7 @@ interface AppContextType {
   theme: AppTheme;
   toggleTheme: () => void;
   loggedIn: boolean;
+  isDarkTheme: boolean;
   setLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -27,7 +28,11 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<AppTheme>(AppTheme.Dark);
+
   const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
+  const isDarkTheme = theme === AppTheme.Dark;
+  const isLightTheme = theme === AppTheme.Light;
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") as AppTheme | null;
@@ -38,12 +43,12 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === AppTheme.Light ? AppTheme.Dark : AppTheme.Light;
+    const newTheme = isLightTheme ? AppTheme.Dark : AppTheme.Light;
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
 
     document.documentElement.classList.remove(
-      theme === AppTheme.Dark ? AppTheme.Dark : AppTheme.Light,
+      isDarkTheme ? AppTheme.Dark : AppTheme.Light,
     );
     document.documentElement.classList.add(newTheme);
   };
@@ -55,6 +60,7 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
         toggleTheme,
         loggedIn,
         setLoggedIn,
+        isDarkTheme,
       }}
     >
       {children}
