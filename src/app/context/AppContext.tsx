@@ -19,9 +19,9 @@ export enum AppTheme {
 interface AppContextType {
   theme: AppTheme;
   toggleTheme: () => void;
-  loggedIn: boolean;
+  isLoggedIn: boolean;
   isDarkTheme: boolean;
-  setLoggedIn: Dispatch<SetStateAction<boolean>>;
+  setIsLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -29,7 +29,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [theme, setTheme] = useState<AppTheme>(AppTheme.Dark);
 
-  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
   const isDarkTheme = theme === AppTheme.Dark;
   const isLightTheme = theme === AppTheme.Light;
@@ -58,8 +58,8 @@ export const AppProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         theme,
         toggleTheme,
-        loggedIn,
-        setLoggedIn,
+        isLoggedIn,
+        setIsLoggedIn,
         isDarkTheme,
       }}
     >

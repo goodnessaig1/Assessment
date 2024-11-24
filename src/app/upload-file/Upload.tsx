@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppTheme, useAppContext } from "@/app/context/AppContext";
+import { useAppContext } from "@/app/context/AppContext";
 import { uploadToArweave } from "@/app/utils/arweave";
 import Uploaded from "./Uploaded";
 import { ThreeDots } from "react-loader-spinner";
@@ -62,30 +62,20 @@ const FileUpload = () => {
     setFile(null);
   };
 
-  const cancelButtonClass = classNames(
-    "rounded-full w-8 h-8 flex items-center justify-center text-3xl",
-    {
-      "text-white": isDarkTheme,
-      "text-gray-900": !isDarkTheme,
-    },
-  );
-
-  const dropzoneClass = classNames(
-    "w-full max-w-md p-6 h-32 border-2 border-dashed rounded-lg text-center cursor-pointer",
-    {
-      "border-blue-500": dragging,
-      "border-gray-300": !dragging,
-      "bg-gray-800 text-white": isDarkTheme,
-      "bg-gray-100 text-gray-900": !isDarkTheme,
-    },
-  );
-
   return (
     <div className="w-full min-h-screen flex items-center flex-col">
       <div className="flex flex-col mt-8 items-center justify-center w-full gap-4">
         <h3 className="font-dancing text-2xl">Upload Files to Arweave</h3>
         <div
-          className={dropzoneClass}
+          className={classNames(
+            "w-full max-w-md p-6 h-32 border-2 border-dashed rounded-lg text-center cursor-pointer",
+            {
+              "border-blue-500": dragging,
+              "border-gray-300": !dragging,
+              "bg-gray-800 text-white": isDarkTheme,
+              "bg-gray-100 text-gray-900": !isDarkTheme,
+            },
+          )}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
@@ -94,7 +84,13 @@ const FileUpload = () => {
           {file && (
             <div className="absolute max-w-md w-full flex items-en ml-[-36px] mt-[-24px]  justify-end">
               <button
-                className={cancelButtonClass}
+                className={classNames(
+                  "rounded-full w-8 h-8 flex items-center justify-center text-3xl",
+                  {
+                    "text-white": isDarkTheme,
+                    "text-gray-900": !isDarkTheme,
+                  },
+                )}
                 onClick={e => {
                   e.stopPropagation();
                   clearFile();
